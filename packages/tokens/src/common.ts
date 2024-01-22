@@ -8,6 +8,14 @@ export const CAKE_MAINNET = new ERC20Token(
   'PancakeSwap Token',
   'https://pancakeswap.finance/',
 )
+export const OHM_TESTNET = new ERC20Token(
+  ChainId.ZETAT,
+  '0xB289e7b820F9b85e28156232085da7307795934f',
+  18,
+  'OHM',
+  'Ohm Protocol Token',
+  'https://ohmprotocol.xyz/',
+)
 
 export const CAKE_TESTNET = new ERC20Token(
   ChainId.BSC_TESTNET,
@@ -61,6 +69,14 @@ export const USDT_BSC = new ERC20Token(
   'https://tether.to/',
 )
 
+export const USDT_ZETA = new ERC20Token(
+  ChainId.ZETAT,
+  '0x1d9DCBf5dBFEFf3194f85f856DCDaE107298F33d',
+  18,
+  'USDT',
+  'Tether USD',
+  'https://tether.to/',
+)
 export const USDT_ETH = new ERC20Token(
   ChainId.ETHEREUM,
   '0xdAC17F958D2ee523a2206206994597C13D831ec7',
@@ -106,16 +122,27 @@ export const BUSD_GOERLI = new ERC20Token(
   'https://www.paxos.com/busd/',
 )
 
+export const BUSD_ZETA = new ERC20Token(
+  ChainId.ZETAT,
+  '0x6B9e34b56504B33468dACbb6D37b79C1b4D3B70E',
+  18,
+  'BUSD',
+  'Binance USD',
+  'https://www.paxos.com/busd/',
+)
+
 export const BUSD: Record<ChainId, ERC20Token> = {
   [ChainId.ETHEREUM]: BUSD_ETH,
   [ChainId.GOERLI]: BUSD_GOERLI,
   [ChainId.BSC]: BUSD_BSC,
   [ChainId.BSC_TESTNET]: BUSD_TESTNET,
+  [ChainId.ZETAT]: BUSD_ZETA
 }
 
 export const CAKE = {
   [ChainId.BSC]: CAKE_MAINNET,
   [ChainId.BSC_TESTNET]: CAKE_TESTNET,
+  [ChainId.ZETAT]: OHM_TESTNET
 }
 
 export const USDC = {
@@ -128,11 +155,20 @@ export const USDC = {
 export const USDT = {
   [ChainId.BSC]: USDT_BSC,
   [ChainId.ETHEREUM]: USDT_ETH,
+  [ChainId.ZETAT]: USDT_ZETA
 }
 
 export const WBTC_ETH = new ERC20Token(
   ChainId.ETHEREUM,
   '0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599',
+  8,
+  'WBTC',
+  'Wrapped BTC',
+)
+
+export const WBTC_ZETA = new ERC20Token(
+  ChainId.ZETAT,
+  '0x0b9e480696d354Fc4103f9a8D62D2d9e2672A152',
   8,
   'WBTC',
   'Wrapped BTC',

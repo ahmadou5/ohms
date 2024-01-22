@@ -19,6 +19,22 @@
       "logoURI": "https://tokens.pancakeswap.finance/images/symbol/bnb.png"
     },
     {
+      "name": "Wrapped ZETA",
+      "symbol": "WZETA",
+      "address": "0xc1ebc1e8F49dAB830C1DD63B15513EDca5a9fD98",
+      "chainId": 7001,
+      "decimals": 18,
+      "logoURI": "https://tokens.pancakeswap.finance/images/symbol/bnb.png"
+    },
+    {
+      "name": "BUSD Token",
+      "symbol": "BUSD",
+      "address": "0x6B9e34b56504B33468dACbb6D37b79C1b4D3B70E",
+      "chainId": 7001,
+      "decimals": 18,
+      "logoURI": "https://tokens.pancakeswap.finance/images/symbol/busd.png"
+    },
+    {
       "name": "BUSD Token",
       "symbol": "BUSD",
       "address": "0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56",
@@ -42,6 +58,7 @@
       "decimals": 18,
       "logoURI": "https://tokens.pancakeswap.finance/images/symbol/wbtc.png"
     },
+    
     {
       "name": "Tether USD",
       "symbol": "USDT",
@@ -49,6 +66,30 @@
       "chainId": 56,
       "decimals": 18,
       "logoURI": "https://tokens.pancakeswap.finance/images/symbol/usdt.png"
+    },
+    {
+      "name": "Tether USD",
+      "symbol": "USDT",
+      "address": "0x1d9DCBf5dBFEFf3194f85f856DCDaE107298F33d",
+      "chainId": 7001,
+      "decimals": 18,
+      "logoURI": "https://tokens.pancakeswap.finance/images/symbol/usdt.png"
+    },
+    {
+      "name": "Ohm Protocol Token",
+      "symbol": "OHM",
+      "address": "0xB289e7b820F9b85e28156232085da7307795934f",
+      "chainId": 7001,
+      "decimals": 18,
+      "logoURI": "https://pancakeswap.finance/images/tokens/0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82.png"
+    },
+    {
+      "name": "Voltage Token",
+      "symbol": "VOLT",
+      "address": "0x3f2EF899eF580e6ee6202212585873E75F85C829",
+      "chainId": 7001,
+      "decimals": 18,
+      "logoURI": "https://pancakeswap.finance/images/tokens/0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82.png"
     },
     {
       "name": "PancakeSwap Token",

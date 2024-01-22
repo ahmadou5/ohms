@@ -163,7 +163,7 @@ function MobileModal<T>({
       </AtomBox>
       <AtomBox p="24px" borderTop="1">
         <AtomBox>
-          <Text textAlign="center" color="textSubtle" as="p" mb="24px">
+          <Text textAlign="center" color="primary" as="p" mb="24px">
             {t('Haven’t got a crypto wallet yet?')}
           </Text>
         </AtomBox>
@@ -323,7 +323,7 @@ function DesktopModal<T>({
           <Heading color="color" as="h4">
             {t('Connect Wallet')}
           </Heading>
-          <Text color="textSubtle" small pt="24px" pb="32px">
+          <Text color="primary" small pt="24px" pb="32px">
             {t(
               'Start by connecting with one of the wallets below. Be sure to store your private keys or seed phrase securely. Never share them with anyone.',
             )}
@@ -439,7 +439,7 @@ const Intro = ({ docLink, docText }: { docLink: string; docText: string }) => {
   const { t } = useTranslation()
   return (
     <>
-      <Heading as="h1" fontSize="20px" color="secondary">
+      <Heading as="h1" fontSize="20px" color="primary">
         {t('Haven’t got a wallet yet?')}
       </Heading>
       <Image src="https://cdn.pancakeswap.com/wallets/wallet_intro.png" width={198} height={178} />
@@ -454,7 +454,7 @@ const NotInstalled = ({ wallet, qrCode }: { wallet: WalletConfigV2; qrCode?: str
   const { t } = useTranslation()
   return (
     <>
-      <Heading as="h1" fontSize="20px" color="secondary">
+      <Heading as="h1" fontSize="20px" color="primary">
         {t('%wallet% is not installed', { wallet: wallet.title })}
       </Heading>
       {qrCode && (

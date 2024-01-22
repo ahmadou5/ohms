@@ -7,6 +7,8 @@ export const CHAIN_QUERY_NAME = {
   [ChainId.GOERLI]: 'goerli',
   [ChainId.BSC]: 'bsc',
   [ChainId.BSC_TESTNET]: 'bscTestnet',
+  [ChainId.ZETAT]: 'zetaTestnet',
+  [ChainId.FON]: 'FonChain'
 } satisfies Record<ChainId, string>
 
 const CHAIN_QUERY_NAME_TO_ID = invert(CHAIN_QUERY_NAME)
