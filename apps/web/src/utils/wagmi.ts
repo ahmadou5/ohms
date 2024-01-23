@@ -12,6 +12,8 @@ import { LedgerConnector } from 'wagmi/connectors/ledger'
 import { jsonRpcProvider } from 'wagmi/providers/jsonRpc'
 import { SafeConnector } from './safeConnector'
 
+
+
 const FonSmartChain:Chain = {
   id: 201022,
   name: "Fon Smart Chain",
@@ -41,6 +43,37 @@ const FonSmartChain:Chain = {
     }
   }
 };
+
+const PowerChain:Chain = {
+  id: 13,
+  name: "Power Chain",
+  network: "PWR",
+  nativeCurrency: { name: "FON", symbol: "FON", decimals: 18 },
+  rpcUrls: {
+    alchemy: {
+      http: ["hhttps://fsc-dataseed1.fonscan.io"],
+      webSocket: ["wss://fsc-dataseed1.fonscan.io"]
+    },
+    infura: {
+      http: ["https://fsc-dataseed1.fonscan.io"],
+      webSocket: ["wss://fsc-dataseed1.fonscan.io"]
+    },
+    default: {
+      http: ["https://fsc-dataseed1.fonscan.io"]
+    }
+  },
+  blockExplorers: {
+    etherscan: { name: "Fonscan", url: "https://fonscan.io" },
+    default: { name: "Fonscan", url: "https://fonscan.io" }
+  },
+  contracts: {
+    multicall3: {
+      address: "0xB289e7b820F9b85e28156232085da7307795934f",
+      blockCreated: 12282180
+    }
+  }
+};
+
 
 const ZetaChain:Chain = {
   id: 7001,
@@ -72,7 +105,7 @@ const ZetaChain:Chain = {
   }
 };
 
-const CHAINS = [bsc, ZetaChain]
+const CHAINS = [ZetaChain,FonSmartChain,PowerChain]
 
 const getNodeRealUrl = (networkName: string) => {
   let host = null
