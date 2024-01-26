@@ -136,7 +136,8 @@ export const BUSD: Record<ChainId, ERC20Token> = {
   [ChainId.GOERLI]: BUSD_GOERLI,
   [ChainId.BSC]: BUSD_BSC,
   [ChainId.BSC_TESTNET]: BUSD_TESTNET,
-  [ChainId.ZETAT]: BUSD_ZETA
+  [ChainId.ZETAT]: BUSD_ZETA,
+  [ChainId.FON]: BUSD_ZETA,
 }
 
 export const CAKE = {

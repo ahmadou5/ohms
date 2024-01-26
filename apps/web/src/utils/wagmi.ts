@@ -105,7 +105,7 @@ const ZetaChain:Chain = {
   }
 };
 
-const CHAINS = [ZetaChain,FonSmartChain,PowerChain]
+const CHAINS = [ZetaChain]
 
 const getNodeRealUrl = (networkName: string) => {
   let host = null
