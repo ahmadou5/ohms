@@ -128,10 +128,10 @@ const Hero = () => {
       >
         <Flex flex="1" flexDirection="column">
           <Heading scale="xxl" color="secondary" mb="24px">
-            {t('Ohm`s Protocol.')}
+            {t('Ohm⚡ Protocol.')}
           </Heading>
           <Heading scale="md" mb="24px">
-            {t('A multiChain Permissionless Decentralised Exchange. Trade Your crypto asset securely.')}
+            {t('A multiChain Permissionless Decentralised Exchange. Trade Your crypto asset in a speed of light⚡.')}
           </Heading>
           <Flex>
             {!account && <ConnectWalletButton mr="8px" />}

@@ -3,7 +3,7 @@ import { SalesSectionProps } from '.'
 
 export const swapSectionData = (t: TranslateFunction): SalesSectionProps => ({
   headingText: t('Trade'),
-  bodyText: t('Trade any Token with a Speed Of Light⚡ with the Super Charge DeFI Platform On Zeta Chain.'),
+  bodyText: t('Trade any token with the speed of light⚡ with the Super Charge DeFI Platform On Zeta Chain.'),
   reverse: false,
   primaryButton: {
     to: '/swap',
@@ -27,7 +27,7 @@ export const swapSectionData = (t: TranslateFunction): SalesSectionProps => ({
 
 export const inscribeSectionData = (t: TranslateFunction): SalesSectionProps => ({
   headingText: t('Ordinals.'),
-  bodyText: t('Explore, inscribe and Trade Bitcoin Ordinals token on Bitcoin Network with Super Charge DeFi Platform Ohm.'),
+  bodyText: t('Explore, inscribe and Trade Bitcoin Ordinals token on Bitcoin Network with the Super Charge DeFi Platform Ohm.'),
   reverse: false,
   primaryButton: {
     to: '/',
@@ -74,14 +74,14 @@ export const earnSectionData = (t: TranslateFunction): SalesSectionProps => ({
 })
 
 export const cakeSectionData = (t: TranslateFunction): SalesSectionProps => ({
-  headingText: t('OHM Token.'),
+  headingText: t('CAKE makes our world go round.'),
   bodyText: t(
-    'OHM token is at the native token of Ohm Protocol. Buy it, stake it....... ',
+    'CAKE token is at the heart of the PancakeSwap ecosystem. Buy it, win it, farm it, spend it, stake it... heck, you can even vote with it!',
   ),
   reverse: false,
   primaryButton: {
-    to: '/swap',
-    text: t('Buy OHM'),
+    to: '/swap?outputCurrency=0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82&chainId=56',
+    text: t('Buy CAKE'),
     external: false,
   },
   secondaryButton: {
@@ -95,7 +95,7 @@ export const cakeSectionData = (t: TranslateFunction): SalesSectionProps => ({
     attributes: [
       { src: 'bottom-right', alt: t('Small 3d pancake') },
       { src: 'top-right', alt: t('Small 3d pancake') },
-      { src: 'OHM', alt: t('OHM token') },
+      { src: 'coin', alt: t('CAKE token') },
       { src: 'top-left', alt: t('Small 3d pancake') },
     ],
   },

@@ -17,7 +17,7 @@ export interface SalesSectionProps {
   images: CompositeImageProps
 }
 
-const SalesSection: React.FC<React.PropsWithChildren<SalesSectionProps>> = (props) => {
+const InscribeSection: React.FC<React.PropsWithChildren<SalesSectionProps>> = (props) => {
   const { headingText, bodyText, reverse, primaryButton, secondaryButton, images } = props
 
   return (
@@ -27,14 +27,6 @@ const SalesSection: React.FC<React.PropsWithChildren<SalesSectionProps>> = (prop
         alignItems={['flex-end', null, null, 'center']}
         justifyContent="center"
       >
-        <Flex
-          height={['192px', null, null, '100%']}
-          width={['192px', null, null, '100%']}
-          flex={[null, null, null, '1']}
-          mb={['24px', null, null, '0']}
-        >
-          <CompositeImage {...images} />
-        </Flex>
         <Flex
           flexDirection="column"
           flex="1"
@@ -46,12 +38,21 @@ const SalesSection: React.FC<React.PropsWithChildren<SalesSectionProps>> = (prop
           <Text color="textSubtle" mb="24px">
             {bodyText}
           </Text>
+          
+        </Flex>
+        <Flex
+          height={['192px', null, null, '100%']}
+          width={['192px', null, null, '100%']}
+          flex={[null, null, null, '1']}
+          mb={['24px', null, null, '0']}
+        >
+          <CompositeImage {...images} />
         </Flex>
       </Flex>
     </Flex>
   )
 }
 
-export default SalesSection
+export default InscribeSection
 
 

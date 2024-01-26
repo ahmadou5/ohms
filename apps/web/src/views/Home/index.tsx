@@ -7,9 +7,10 @@ import { useTranslation } from '@pancakeswap/localization'
 import { useActiveChainId } from 'hooks/useActiveChainId'
 import { ChainId } from '@pancakeswap/sdk'
 import Hero from './components/Hero'
-import { swapSectionData, earnSectionData, cakeSectionData } from './components/SalesSection/data'
+import { swapSectionData, inscribeSectionData, earnSectionData, cakeSectionData } from './components/SalesSection/data'
 import MetricsSection from './components/MetricsSection'
 import SalesSection from './components/SalesSection'
+import InscribeSection from './components/InscribeSection'
 import WinSection from './components/WinSection'
 import FarmsPoolsRow from './components/FarmsPoolsRow'
 import Footer from './components/Footer'
@@ -105,7 +106,32 @@ const Home: React.FC<React.PropsWithChildren> = () => {
         
         <SalesSection {...swapSectionData(t)} />
       </PageSection>
+
+      <PageSection
+        innerProps={{ style: HomeSectionContainerStyles }}
+        background={theme.colors.background}
+        containerProps={{
+          id: 'home-4',
+        }}
+        index={2}
+        hasCurvedDivider={false}
+      >
+        <InscribeSection {...inscribeSectionData(t)} />
+      </PageSection>
+
+      <PageSection
+        innerProps={{ style: HomeSectionContainerStyles }}
+        background={theme.colors.background}
+        containerProps={{
+          id: 'home-4',
+        }}
+        index={2}
+        hasCurvedDivider={false}
+      >
+        <SalesSection {...cakeSectionData(t)} />
+      </PageSection>
     
+
       
       <PageSection
         innerProps={{ style: HomeSectionContainerStyles }}
