@@ -1,13 +1,19 @@
 import { Flex, Heading, Skeleton, Text, Balance } from '@pancakeswap/uikit'
-
+import cakeAbi from 'config/abi/cake.json'
 import { useBalance, useToken } from 'wagmi'
-
+import { zetaTestnetTokens } from '@pancakeswap/tokens'
 import { useTranslation } from '@pancakeswap/localization'
-
+import { useIntersectionObserver } from '@pancakeswap/hooks'
+import { useEffect, useState } from 'react'
 import { usePriceCakeBusd } from 'state/farms/hooks'
 import styled from 'styled-components'
-import {  formatLocalisedCompactNumber } from '@pancakeswap/utils/formatBalance'
-
+import { formatBigNumber, formatLocalisedCompactNumber } from '@pancakeswap/utils/formatBalance'
+import { multicallv3 } from 'utils/multicall'
+import { getCakeVaultAddress } from 'utils/addressHelpers'
+import useSWR from 'swr'
+import { SLOW_INTERVAL } from 'config/constants'
+import cakeVaultV2Abi from 'config/abi/cakeVaultV2.json'
+import { BigNumber } from '@ethersproject/bignumber'
 import { ChainId } from '@pancakeswap/sdk'
 
 const StyledColumn = styled(Flex)<{ noMobileBorder?: boolean; noDesktopBorder?: boolean }>`
@@ -58,7 +64,7 @@ const Grid = styled.div`
   }
 `
 
-const emissionsPerBlock = 0
+const emissionsPerBlock = 9.9
 
 /**
  * User (Planet Finance) built a contract on top of our original manual CAKE pool,
@@ -68,39 +74,83 @@ const emissionsPerBlock = 0
  * https://twitter.com/PancakeSwap/status/1523913527626702849
  * https://bscscan.com/tx/0xd5ffea4d9925d2f79249a4ce05efd4459ed179152ea5072a2df73cd4b9e88ba7
  */
+const planetFinanceBurnedTokensWei = BigNumber.from('637407922445268000000000')
+const cakeVaultAddress = getCakeVaultAddress()
 
 const CakeDataRow = () => {
   const { t } = useTranslation()
-  
-  
-  const { data:ohmdetails }:any = useToken({
+  const { observerRef, isIntersecting } = useIntersectionObserver()
+  const [loadData, setLoadData] = useState(false)
+  const { data:ohmdetails }: any = useToken({
     address: "0x3f2EF899eF580e6ee6202212585873E75F85C829",
     chainId: ChainId.ZETAT
   })
-  
-  const { data:ohmBurn }:any = useBalance({
+  console.log('supply',ohmdetails.totalSupply.formatted)
+  const { data:ohmBurn } :any = useBalance({
     address: "0x000000000000000000000000000000000000dEaD",
-    token: "0x3f2EF899eF580e6ee6202212585873E75F85C829",
+    token: '0x3f2EF899eF580e6ee6202212585873E75F85C829',
     chainId: ChainId.ZETAT
 
   })
- 
+  
+  console.log('ggg',Circ)
+  const {
+    data: { cakeSupply, burnedBalance, circulatingSupply } = {
+      cakeSupply: 0,
+      burnedBalance: 0,
+      circulatingSupply: 0,
+    },
+  } = useSWR(
+    loadData ? ['cakeDataRow'] : null,
+    async () => {
+      const totalSupplyCall = { abi: cakeAbi, address: zetaTestnetTokens.ohm.address, name: 'totalSupply' }
+      const burnedTokenCall = {
+        abi: cakeAbi,
+        address: zetaTestnetTokens.ohm.address,
+        name: 'balanceOf',
+        params: ['0x000000000000000000000000000000000000dEaD'],
+      }
+      const cakeVaultCall = {
+        abi: cakeVaultV2Abi,
+        address: cakeVaultAddress,
+        name: 'totalLockedAmount',
+      }
 
- 
+      const [[totalSupply], [burned], [totalLockedAmount]] = await multicallv3({
+        calls: [totalSupplyCall, burnedTokenCall, cakeVaultCall],
+        chainId: ChainId.ZETAT,
+        allowFailure: true,
+      })
+      const totalBurned = planetFinanceBurnedTokensWei.add(burned)
+      const circulating = totalSupply.sub(totalBurned.add(totalLockedAmount))
 
-    
+      return {
+        cakeSupply: totalSupply && burned ? +formatBigNumber(totalSupply.sub(totalBurned)) : 0,
+        burnedBalance: burned ? +formatBigNumber(totalBurned) : 0,
+        circulatingSupply: circulating ? +formatBigNumber(circulating) : 0,
+      }
+    },
+    {
+      refreshInterval: SLOW_INTERVAL,
+    },
+  )
   const cakePriceBusd = usePriceCakeBusd()
   const mcap = cakePriceBusd.times(ohmdetails.totalSupply.formatted)
   const mcapString = formatLocalisedCompactNumber(mcap.toNumber())
 
-  
+  useEffect(() => {
+    if (isIntersecting) {
+     
+      setLoadData(true)
+    }
+  }, [isIntersecting])
 
   return (
     <Grid>
       <Flex flexDirection="column" style={{ gridArea: 'a' }}>
         <Text color="textSubtle">{t('Circulating Supply')}</Text>
         {ohmdetails ? (
-          <Balance decimals={0} lineHeight="1.1" fontSize="24px" bold value={ohmdetails.totalSupply.formatted-ohmBurn.formatted} />
+          <Balance decimals={0} lineHeight="1.1" fontSize="24px" bold value={ohmdetails.totalSupply.formatted-ohmBurn} />
         ) : (
           <Skeleton height={24} width={126} my="4px" />
         )}
@@ -111,7 +161,7 @@ const CakeDataRow = () => {
           <Balance decimals={0} lineHeight="1.1" fontSize="24px" bold value={ohmdetails.totalSupply.formatted} />
         ) : (
           <>
-            
+            <div ref={observerRef} />
             <Skeleton height={24} width={126} my="4px" />
           </>
         )}
