@@ -93,7 +93,6 @@ const CakeDataRow = () => {
 
   })
   
-  console.log('ggg',Circ)
   const {
     data: { cakeSupply, burnedBalance, circulatingSupply } = {
       cakeSupply: 0,
