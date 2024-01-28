@@ -74,13 +74,11 @@ const emissionsPerBlock = 0
  * https://twitter.com/PancakeSwap/status/1523913527626702849
  * https://bscscan.com/tx/0xd5ffea4d9925d2f79249a4ce05efd4459ed179152ea5072a2df73cd4b9e88ba7
  */
-const planetFinanceBurnedTokensWei = BigNumber.from('637407922445268000000000')
-const cakeVaultAddress = getCakeVaultAddress()
 
 const CakeDataRow = () => {
   const { t } = useTranslation()
   const { observerRef, isIntersecting } = useIntersectionObserver()
-  const [loadData, setLoadData] = useState(false)
+  
   const { data:ohmdetails }:any = useToken({
     address: "0x3f2EF899eF580e6ee6202212585873E75F85C829",
     chainId: ChainId.ZETAT
@@ -94,56 +92,14 @@ const CakeDataRow = () => {
   })
  
 
-  const {
-    data: { cakeSupply, burnedBalance, circulatingSupply } = {
-      cakeSupply: 0,
-      burnedBalance: 0,
-      circulatingSupply: 0,
-    },
-  } = useSWR(
-    loadData ? ['cakeDataRow'] : null,
-    async () => {
-      const totalSupplyCall = { abi: cakeAbi, address: zetaTestnetTokens.ohm.address, name: 'totalSupply' }
-      const burnedTokenCall = {
-        abi: cakeAbi,
-        address: zetaTestnetTokens.ohm.address,
-        name: 'balanceOf',
-        params: ['0x000000000000000000000000000000000000dEaD'],
-      }
-      const cakeVaultCall = {
-        abi: cakeVaultV2Abi,
-        address: cakeVaultAddress,
-        name: 'totalLockedAmount',
-      }
+ 
 
-      const [[totalSupply], [burned], [totalLockedAmount]] = await multicallv3({
-        calls: [totalSupplyCall, burnedTokenCall, cakeVaultCall],
-        chainId: ChainId.ZETAT,
-        allowFailure: true,
-      })
-      const totalBurned = planetFinanceBurnedTokensWei.add(burned)
-      const circulating = totalSupply.sub(totalBurned.add(totalLockedAmount))
-
-      return {
-        cakeSupply: totalSupply && burned ? +formatBigNumber(totalSupply.sub(totalBurned)) : 0,
-        burnedBalance: burned ? +formatBigNumber(totalBurned) : 0,
-        circulatingSupply: circulating ? +formatBigNumber(circulating) : 0,
-      }
-    },
-    {
-      refreshInterval: SLOW_INTERVAL,
-    },
-  )
+    
   const cakePriceBusd = usePriceCakeBusd()
   const mcap = cakePriceBusd.times(ohmdetails.totalSupply.formatted)
   const mcapString = formatLocalisedCompactNumber(mcap.toNumber())
 
-  useEffect(() => {
-    if (isIntersecting) {
-     
-      setLoadData(true)
-    }
-  }, [isIntersecting])
+  
 
   return (
     <Grid>
