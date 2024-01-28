@@ -92,8 +92,8 @@ const CakeDataRow = () => {
     chainId: ChainId.ZETAT
 
   })
-  const Circ = ohmdetails.totalSupply.formatted-ohmBurn
-  console.log('ggg',Circ)
+ 
+
   const {
     data: { cakeSupply, burnedBalance, circulatingSupply } = {
       cakeSupply: 0,
