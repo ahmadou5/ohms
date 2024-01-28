@@ -1,6 +1,7 @@
 import { Flex, Heading, Skeleton, Text, Balance } from '@pancakeswap/uikit'
 import cakeAbi from 'config/abi/cake.json'
-import { bscTokens } from '@pancakeswap/tokens'
+import { useBalance, useToken } from 'wagmi'
+import { zetaTestnetTokens } from '@pancakeswap/tokens'
 import { useTranslation } from '@pancakeswap/localization'
 import { useIntersectionObserver } from '@pancakeswap/hooks'
 import { useEffect, useState } from 'react'
@@ -13,6 +14,7 @@ import useSWR from 'swr'
 import { SLOW_INTERVAL } from 'config/constants'
 import cakeVaultV2Abi from 'config/abi/cakeVaultV2.json'
 import { BigNumber } from '@ethersproject/bignumber'
+import { ChainId } from '@pancakeswap/sdk'
 
 const StyledColumn = styled(Flex)<{ noMobileBorder?: boolean; noDesktopBorder?: boolean }>`
   flex-direction: column;
@@ -62,7 +64,7 @@ const Grid = styled.div`
   }
 `
 
-const emissionsPerBlock = 9.9
+const emissionsPerBlock = 0
 
 /**
  * User (Planet Finance) built a contract on top of our original manual CAKE pool,
@@ -79,6 +81,19 @@ const CakeDataRow = () => {
   const { t } = useTranslation()
   const { observerRef, isIntersecting } = useIntersectionObserver()
   const [loadData, setLoadData] = useState(false)
+  const { data:ohmdetails } = useToken({
+    address: "0x3f2EF899eF580e6ee6202212585873E75F85C829",
+    chainId: ChainId.ZETAT
+  })
+  console.log('supply',ohmdetails.totalSupply.formatted)
+  const { data:ohmBurn } = useBalance({
+    address: "0x000000000000000000000000000000000000dEaD",
+    token: "0x3f2EF899eF580e6ee6202212585873E75F85C829",
+    chainId: ChainId.ZETAT
+
+  })
+  const Circ = ohmdetails.totalSupply.formatted-ohmBurn
+  console.log('ggg',Circ)
   const {
     data: { cakeSupply, burnedBalance, circulatingSupply } = {
       cakeSupply: 0,
@@ -88,10 +103,10 @@ const CakeDataRow = () => {
   } = useSWR(
     loadData ? ['cakeDataRow'] : null,
     async () => {
-      const totalSupplyCall = { abi: cakeAbi, address: bscTokens.cake.address, name: 'totalSupply' }
+      const totalSupplyCall = { abi: cakeAbi, address: zetaTestnetTokens.ohm.address, name: 'totalSupply' }
       const burnedTokenCall = {
         abi: cakeAbi,
-        address: bscTokens.cake.address,
+        address: zetaTestnetTokens.ohm.address,
         name: 'balanceOf',
         params: ['0x000000000000000000000000000000000000dEaD'],
       }
@@ -103,6 +118,7 @@ const CakeDataRow = () => {
 
       const [[totalSupply], [burned], [totalLockedAmount]] = await multicallv3({
         calls: [totalSupplyCall, burnedTokenCall, cakeVaultCall],
+        chainId: ChainId.ZETAT,
         allowFailure: true,
       })
       const totalBurned = planetFinanceBurnedTokensWei.add(burned)
@@ -119,11 +135,12 @@ const CakeDataRow = () => {
     },
   )
   const cakePriceBusd = usePriceCakeBusd()
-  const mcap = cakePriceBusd.times(circulatingSupply)
+  const mcap = cakePriceBusd.times(ohmdetails.totalSupply.formatted)
   const mcapString = formatLocalisedCompactNumber(mcap.toNumber())
 
   useEffect(() => {
     if (isIntersecting) {
+     
       setLoadData(true)
     }
   }, [isIntersecting])
@@ -132,16 +149,16 @@ const CakeDataRow = () => {
     <Grid>
       <Flex flexDirection="column" style={{ gridArea: 'a' }}>
         <Text color="textSubtle">{t('Circulating Supply')}</Text>
-        {circulatingSupply ? (
-          <Balance decimals={0} lineHeight="1.1" fontSize="24px" bold value={circulatingSupply} />
+        {ohmdetails ? (
+          <Balance decimals={0} lineHeight="1.1" fontSize="24px" bold value={ohmdetails.totalSupply.formatted-ohmBurn.formatted} />
         ) : (
           <Skeleton height={24} width={126} my="4px" />
         )}
       </Flex>
       <StyledColumn noMobileBorder style={{ gridArea: 'b' }}>
         <Text color="textSubtle">{t('Total supply')}</Text>
-        {cakeSupply ? (
-          <Balance decimals={0} lineHeight="1.1" fontSize="24px" bold value={cakeSupply} />
+        {ohmdetails ? (
+          <Balance decimals={0} lineHeight="1.1" fontSize="24px" bold value={ohmdetails.totalSupply.formatted} />
         ) : (
           <>
             <div ref={observerRef} />
@@ -152,7 +169,7 @@ const CakeDataRow = () => {
       <StyledColumn noMobileBorder style={{ gridArea: 'c' }}>
         <Text color="textSubtle">{t('Max Supply')}</Text>
 
-        <Balance decimals={0} lineHeight="1.1" fontSize="24px" bold value={0} />
+        <Balance decimals={0} lineHeight="1.1" fontSize="24px" bold value={3000000} />
       </StyledColumn>
       <StyledColumn noDesktopBorder style={{ gridArea: 'd' }}>
         <Text color="textSubtle">{t('Market cap')}</Text>
@@ -164,8 +181,8 @@ const CakeDataRow = () => {
       </StyledColumn>
       <StyledColumn style={{ gridArea: 'e' }}>
         <Text color="textSubtle">{t('Burned to date')}</Text>
-        {burnedBalance ? (
-          <Balance decimals={0} lineHeight="1.1" fontSize="24px" bold value={burnedBalance} />
+        {ohmBurn ? (
+          <Balance decimals={0} lineHeight="1.1" fontSize="24px" bold value={ohmBurn.formatted} />
         ) : (
           <Skeleton height={24} width={126} my="4px" />
         )}

@@ -10,9 +10,9 @@ export const CAKE_MAINNET = new ERC20Token(
 )
 export const OHM_TESTNET = new ERC20Token(
   ChainId.ZETAT,
-  '0xB289e7b820F9b85e28156232085da7307795934f',
+  '0x3f2EF899eF580e6ee6202212585873E75F85C829',
   18,
-  'OHM',
+  'Volt',
   'Ohm Protocol Token',
   'https://ohmprotocol.xyz/',
 )
