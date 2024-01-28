@@ -1,12 +1,12 @@
 import { Flex, Heading, Skeleton, Text, Balance } from '@pancakeswap/uikit'
 
 import { useBalance, useToken } from 'wagmi'
-import { useTranslation } from '@pancakeswap/localization'
 
+import { useTranslation } from '@pancakeswap/localization'
 
 import { usePriceCakeBusd } from 'state/farms/hooks'
 import styled from 'styled-components'
-import { formatLocalisedCompactNumber } from '@pancakeswap/utils/formatBalance'
+import {  formatLocalisedCompactNumber } from '@pancakeswap/utils/formatBalance'
 
 import { ChainId } from '@pancakeswap/sdk'
 
@@ -111,7 +111,7 @@ const CakeDataRow = () => {
           <Balance decimals={0} lineHeight="1.1" fontSize="24px" bold value={ohmdetails.totalSupply.formatted} />
         ) : (
           <>
-            <div ref={observerRef} />
+            
             <Skeleton height={24} width={126} my="4px" />
           </>
         )}
