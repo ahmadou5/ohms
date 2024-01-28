@@ -1,19 +1,13 @@
 import { Flex, Heading, Skeleton, Text, Balance } from '@pancakeswap/uikit'
-import cakeAbi from 'config/abi/cake.json'
+
 import { useBalance, useToken } from 'wagmi'
-import { zetaTestnetTokens } from '@pancakeswap/tokens'
 import { useTranslation } from '@pancakeswap/localization'
-import { useIntersectionObserver } from '@pancakeswap/hooks'
-import { useEffect, useState } from 'react'
+
+
 import { usePriceCakeBusd } from 'state/farms/hooks'
 import styled from 'styled-components'
-import { formatBigNumber, formatLocalisedCompactNumber } from '@pancakeswap/utils/formatBalance'
-import { multicallv3 } from 'utils/multicall'
-import { getCakeVaultAddress } from 'utils/addressHelpers'
-import useSWR from 'swr'
-import { SLOW_INTERVAL } from 'config/constants'
-import cakeVaultV2Abi from 'config/abi/cakeVaultV2.json'
-import { BigNumber } from '@ethersproject/bignumber'
+import { formatLocalisedCompactNumber } from '@pancakeswap/utils/formatBalance'
+
 import { ChainId } from '@pancakeswap/sdk'
 
 const StyledColumn = styled(Flex)<{ noMobileBorder?: boolean; noDesktopBorder?: boolean }>`
@@ -77,7 +71,7 @@ const emissionsPerBlock = 0
 
 const CakeDataRow = () => {
   const { t } = useTranslation()
-  const { observerRef, isIntersecting } = useIntersectionObserver()
+  
   
   const { data:ohmdetails }:any = useToken({
     address: "0x3f2EF899eF580e6ee6202212585873E75F85C829",
