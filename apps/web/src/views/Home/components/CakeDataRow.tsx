@@ -81,12 +81,12 @@ const CakeDataRow = () => {
   const { t } = useTranslation()
   const { observerRef, isIntersecting } = useIntersectionObserver()
   const [loadData, setLoadData] = useState(false)
-  const { data:ohmdetails } = useToken({
+  const { data:ohmdetails }:any = useToken({
     address: "0x3f2EF899eF580e6ee6202212585873E75F85C829",
     chainId: ChainId.ZETAT
   })
-  console.log('supply',ohmdetails.totalSupply.formatted)
-  const { data:ohmBurn } = useBalance({
+  
+  const { data:ohmBurn }:any = useBalance({
     address: "0x000000000000000000000000000000000000dEaD",
     token: "0x3f2EF899eF580e6ee6202212585873E75F85C829",
     chainId: ChainId.ZETAT
