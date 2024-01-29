@@ -32,26 +32,8 @@ const TokenSection: React.FC<React.PropsWithChildren<SalesSectionProps>> = (prop
   const { headingText, bodyText, reverse, images } = props
   const [ totalSupply, setTotalSupply] = useState(0)
   const { t } = useTranslation()
-  const { data:ohmdetails }: any = useToken({
-    address: "0xB289e7b820F9b85e28156232085da7307795934f",
-    chainId: ChainId.ZETAT
-  })
- 
-  const { data:ohmBurn } :any = useBalance({
-    address: "0x000000000000000000000000000000000000dEaD",
-    token: '0xB289e7b820F9b85e28156232085da7307795934f',
-    chainId: ChainId.ZETAT
-
-  })
-  const cakePriceBusd:any = 0.3
-  // const cakePriceBusd = usePriceCakeBusd()
-  const mcap = cakePriceBusd*ohmdetails.totalSupply.formatted
-  const mcapString = formatLocalisedCompactNumber(mcap)
-
-  useEffect(() => {
-    setTotalSupply(ohmdetails.totalSupply.formatted)
-  }, [])
-  
+  const  ohmdetails = true
+  const ohmBurn = true
   return (
     <Flex flexDirection="column">
       <Flex
