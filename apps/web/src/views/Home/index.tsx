@@ -10,12 +10,14 @@ import Hero from './components/Hero'
 import { swapSectionData, inscribeSectionData, earnSectionData, cakeSectionData } from './components/SalesSection/data'
 import MetricsSection from './components/MetricsSection'
 import SalesSection from './components/SalesSection'
+import TokenSection from './components/TokenSection'
 import InscribeSection from './components/InscribeSection'
 import WinSection from './components/WinSection'
 import FarmsPoolsRow from './components/FarmsPoolsRow'
 import Footer from './components/Footer'
 import CakeDataRow from './components/CakeDataRow'
 import { WedgeTopLeft, InnerWedgeWrapper, OuterWedgeWrapper, WedgeTopRight } from './components/WedgeSvgs'
+// import TokenSection from './components/TokenSection'
 // import UserBanner from './components/UserBanner'
 // import MultipleBanner from './components/Banners/MultipleBanner'
 
@@ -128,7 +130,7 @@ const Home: React.FC<React.PropsWithChildren> = () => {
         index={2}
         hasCurvedDivider={false}
       >
-        <SalesSection {...cakeSectionData(t)} />
+        <TokenSection {...cakeSectionData(t)} />
       </PageSection>
     
 

@@ -95,7 +95,7 @@ export const cakeSectionData = (t: TranslateFunction): SalesSectionProps => ({
     attributes: [
       
       { src: 'OHM', alt: t('OHM token') },
-      
+     
     ],
   },
 })
