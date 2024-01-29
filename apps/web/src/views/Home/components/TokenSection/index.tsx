@@ -1,4 +1,5 @@
 import { useTranslation } from '@pancakeswap/localization'
+import { useState, useEffect} from 'react'
 import { formatBigNumber, formatLocalisedCompactNumber } from '@pancakeswap/utils/formatBalance'
 import { Flex, Text, Button, Link, Skeleton, NextLinkFromReactRouter as RouterLink,Balance ,Heading, OpenNewIcon } from '@pancakeswap/uikit'
 import { useBalance, useToken } from 'wagmi'
@@ -28,13 +29,14 @@ export interface SalesSectionProps {
 }
 
 const TokenSection: React.FC<React.PropsWithChildren<SalesSectionProps>> = (props) => {
-  const { headingText, bodyText, reverse, primaryButton, secondaryButton, images } = props
+  const { headingText, bodyText, reverse, images } = props
+  const [ totalSupply, setTotalSupply] = useState('')
   const { t } = useTranslation()
   const { data:ohmdetails }: any = useToken({
     address: "0xB289e7b820F9b85e28156232085da7307795934f",
     chainId: ChainId.ZETAT
   })
-  console.log('supply',ohmdetails.totalSupply.formatted)
+ 
   const { data:ohmBurn } :any = useBalance({
     address: "0x000000000000000000000000000000000000dEaD",
     token: '0xB289e7b820F9b85e28156232085da7307795934f',
@@ -45,6 +47,11 @@ const TokenSection: React.FC<React.PropsWithChildren<SalesSectionProps>> = (prop
   // const cakePriceBusd = usePriceCakeBusd()
   const mcap = cakePriceBusd*ohmdetails.totalSupply.formatted
   const mcapString = formatLocalisedCompactNumber(mcap)
+
+  useEffect(() => {
+    setTotalSupply(ohmdetails.totalSupply.formatted)
+  }, [])
+  
   return (
     <Flex flexDirection="column">
       <Flex
@@ -75,28 +82,24 @@ const TokenSection: React.FC<React.PropsWithChildren<SalesSectionProps>> = (prop
           <Flex flexDirection="column"  style={{ gridArea: 'a' }}>
         <Text  mt="12px" color="textSubtle">{t('Total Supply')}</Text>
         {ohmdetails ? (
-          <Balance decimals={0} lineHeight="1.1" fontSize="24px" bold value={ohmdetails.totalSupply.formatted} />
+          <Balance decimals={0} lineHeight="1.1" fontSize="24px" bold value={totalSupply} />
         ) : (
           <Skeleton height={24} width={126} my="4px" />
         )}
         <Text mt="12px" color="textSubtle">{t('Circulating Supply')}</Text>
         {ohmBurn ? (
-          <Balance decimals={0} lineHeight="1.1" fontSize="24px" bold value={ohmdetails.totalSupply.formatted-ohmBurn.formatted} />
+          <Balance decimals={0} lineHeight="1.1" fontSize="24px" bold value={totalSupply} />
         ) : (
           <Skeleton height={24} width={126} my="4px" />
         )}
         <Text mt="12px" color="textSubtle">{t('Burn to Date')}</Text>
         {ohmBurn ? (
-          <Balance decimals={0} lineHeight="1.1" fontSize="24px" bold value={ohmBurn.formatted} />
+          <Balance decimals={0} lineHeight="1.1" fontSize="24px" bold value={totalSupply} />
         ) : (
           <Skeleton height={24} width={126} my="4px" />
         )}
         <Text mt="12px" color="textSubtle">{t('Market cap')}</Text>
-        {mcap && mcapString ? (
-          <Heading scale="lg">{t('$%marketCap%', { marketCap: mcapString })}</Heading>
-        ) : (
-          <Skeleton height={24} width={126} my="4px" />
-        )}
+        
       </Flex>
       
         </Flex>
