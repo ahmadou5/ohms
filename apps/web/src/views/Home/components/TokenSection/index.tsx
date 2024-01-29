@@ -5,8 +5,10 @@ import { Flex, Text, Button, Link, Skeleton, NextLinkFromReactRouter as RouterLi
 import { useBalance, useToken } from 'wagmi'
 import { usePriceCakeBusd } from 'state/farms/hooks'
 import { ChainId } from '@pancakeswap/sdk'
+import useGetTokenData from 'views/Home/hooks/useTokenData'
 import ColoredWordHeading from '../ColoredWordHeading'
 import CompositeImage, { CompositeImageProps } from '../CompositeImage'
+
 
 
 
@@ -30,10 +32,17 @@ export interface SalesSectionProps {
 
 const TokenSection: React.FC<React.PropsWithChildren<SalesSectionProps>> = (props) => {
   const { headingText, bodyText, reverse, images } = props
-  const [ totalSupply, setTotalSupply] = useState(0)
+  // const [ totalSupply, setTotalSupply] = useState(0)
   const { t } = useTranslation()
-  const  ohmdetails = true
-  const ohmBurn = true
+  const { burn , totalSupply} = useGetTokenData()
+  
+  const cakePriceBusd:any = 0.3
+  // const cakePriceBusd = usePriceCakeBusd()
+  const mcap = cakePriceBusd*totalSupply
+  const mcapString = formatLocalisedCompactNumber(mcap)
+
+  
+  
   return (
     <Flex flexDirection="column">
       <Flex
@@ -58,30 +67,34 @@ const TokenSection: React.FC<React.PropsWithChildren<SalesSectionProps>> = (prop
           alignSelf={['flex-start', null, null, 'center']}
         >
           <ColoredWordHeading text={headingText} />
-          <Text color="textSubtle" mb="20px">
+          <Text color="textSubtle" mb="17px">
             {bodyText}
           </Text>
           <Flex flexDirection="column"  style={{ gridArea: 'a' }}>
-        <Text  mt="12px" color="textSubtle">{t('Total Supply')}</Text>
-        {ohmdetails ? (
+        <Text  mt="8px" color="textSubtle">{t('Total Supply')}</Text>
+        {totalSupply ? (
           <Balance decimals={0} lineHeight="1.1" fontSize="24px" bold value={totalSupply} />
         ) : (
           <Skeleton height={24} width={126} my="4px" />
         )}
-        <Text mt="12px" color="textSubtle">{t('Circulating Supply')}</Text>
-        {ohmBurn ? (
-          <Balance decimals={0} lineHeight="1.1" fontSize="24px" bold value={totalSupply} />
+        <Text mt="8px" color="textSubtle">{t('Circulating Supply')}</Text>
+        {totalSupply && burn ? (
+          <Balance decimals={0} lineHeight="1.1" fontSize="24px" bold value={totalSupply-burn} />
         ) : (
           <Skeleton height={24} width={126} my="4px" />
         )}
-        <Text mt="12px" color="textSubtle">{t('Burn to Date')}</Text>
-        {ohmBurn ? (
-          <Balance decimals={0} lineHeight="1.1" fontSize="24px" bold value={totalSupply} />
+        <Text mt="8px" color="textSubtle">{t('Burn to Date')}</Text>
+        {burn ? (
+          <Balance decimals={0} lineHeight="1.1" fontSize="24px" bold value={burn} />
         ) : (
           <Skeleton height={24} width={126} my="4px" />
         )}
-        <Text mt="12px" color="textSubtle">{t('Market cap')}</Text>
-        
+        <Text mt="8px" color="textSubtle">{t('Market cap')}</Text>
+        {mcap && mcapString ? (
+          <Heading scale="lg">{t('$%marketCap%', { marketCap: mcapString })}</Heading>
+        ) : (
+          <Skeleton height={24} width={126} my="4px" />
+        )}
       </Flex>
       
         </Flex>
