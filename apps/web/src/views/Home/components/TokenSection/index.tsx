@@ -30,7 +30,7 @@ export interface SalesSectionProps {
 
 const TokenSection: React.FC<React.PropsWithChildren<SalesSectionProps>> = (props) => {
   const { headingText, bodyText, reverse, images } = props
-  const [ totalSupply, setTotalSupply] = useState('')
+  const [ totalSupply, setTotalSupply] = useState(0)
   const { t } = useTranslation()
   const { data:ohmdetails }: any = useToken({
     address: "0xB289e7b820F9b85e28156232085da7307795934f",
