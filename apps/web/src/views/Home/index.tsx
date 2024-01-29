@@ -133,15 +133,7 @@ const Home: React.FC<React.PropsWithChildren> = () => {
     
 
       
-      <PageSection
-        innerProps={{ style: HomeSectionContainerStyles }}
-        background={theme.colors.background}
-        index={2}
-        hasCurvedDivider={false}
-      >
-        
-        <CakeDataRow />
-      </PageSection>
+    
       
     </>
   )
