@@ -91,13 +91,7 @@ const MenuItem: React.FC<React.PropsWithChildren<FooterProps>> = ({
             <SkeletonV2 variant="round" width="56px" height="32px" isDataReady={isMounted}>
               <ThemeSwitcher isDark={isDark} toggleTheme={toggleTheme} />
             </SkeletonV2>
-            <LangSelector
-              currentLang={currentLang}
-              langs={langs}
-              setLang={setLang}
-              color="textSubtle"
-              dropdownPosition="top-right"
-            />
+            
           </Flex>
           <Flex order={[1, null, 2]} mb={["24px", null, "0"]} justifyContent="space-between" alignItems="center">
             <Box mr="20px">

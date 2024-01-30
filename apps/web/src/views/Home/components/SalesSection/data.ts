@@ -19,8 +19,8 @@ export const swapSectionData = (t: TranslateFunction): SalesSectionProps => ({
     path: '/images/home/trade/',
     attributes: [
       { src: 'OHM', alt: t('OHM token') },
-      
-      
+      { src: 'BNB', alt: t('OHM token') },
+      { src: 'ZZ', alt: t('OHM token') },
     ],
   },
 })
@@ -42,7 +42,7 @@ export const inscribeSectionData = (t: TranslateFunction): SalesSectionProps => 
   images: {
     path: '/images/home/trade/',
     attributes: [
-      
+      { src: 'ZZZ', alt: t('OHM token') },
       { src: 'BTC', alt: t('BTC token') },
       
     ],

@@ -36,9 +36,10 @@ const TokenSection: React.FC<React.PropsWithChildren<SalesSectionProps>> = (prop
   const { t } = useTranslation()
   const { burn , totalSupply} = useGetTokenData()
   
-  const cakePriceBusd:any = 0.3
+  const cakePriceBusd:any = 70
+  const circleSupp = totalSupply-burn
   // const cakePriceBusd = usePriceCakeBusd()
-  const mcap = cakePriceBusd*totalSupply
+  const mcap = cakePriceBusd*circleSupp
   const mcapString = formatLocalisedCompactNumber(mcap)
 
   
@@ -79,7 +80,7 @@ const TokenSection: React.FC<React.PropsWithChildren<SalesSectionProps>> = (prop
         )}
         <Text mt="8px" color="textSubtle">{t('Circulating Supply')}</Text>
         {totalSupply && burn ? (
-          <Balance decimals={0} lineHeight="1.1" fontSize="24px" bold value={totalSupply-burn} />
+          <Balance decimals={0} lineHeight="1.1" fontSize="24px" bold value={circleSupp} />
         ) : (
           <Skeleton height={24} width={126} my="4px" />
         )}
