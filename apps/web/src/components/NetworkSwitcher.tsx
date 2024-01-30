@@ -75,7 +75,7 @@ const WrongNetworkSelect = ({ switchNetwork, chainId }) => {
   const localChainId = ChainId.ZETAT
   const [, setSessionChainId] = useSessionChainId()
 
-  const localChainName = chains.find((c) => c.id === localChainId)?.name ?? 'ZETA'
+  const localChainName = chains.find((c) => c.id === localChainId)?.name ?? 'ZETAT'
 
   const [ref1, isHover] = useHover<HTMLButtonElement>()
 
@@ -156,7 +156,7 @@ export const NetworkSwitcher = () => {
               <Box display={['block', null, null, null, null, 'none']}>{symbol}</Box>
             </>
           ) : (
-            t('Select a Network')
+            t('Select a hr Network')
           )
         }
       >

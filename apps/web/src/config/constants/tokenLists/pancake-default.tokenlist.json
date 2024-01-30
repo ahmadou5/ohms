@@ -24,7 +24,7 @@
       "address": "0xc1ebc1e8F49dAB830C1DD63B15513EDca5a9fD98",
       "chainId": 7001,
       "decimals": 18,
-      "logoURI": "https://tokens.pancakeswap.finance/images/symbol/bnb.png"
+      "logoURI": "https://ohmprotocol.xyz/images/chains/7001.pmg"
     },
     {
       "name": "BUSD Token",
@@ -81,7 +81,7 @@
       "address": "0xB289e7b820F9b85e28156232085da7307795934f",
       "chainId": 7001,
       "decimals": 18,
-      "logoURI": "https://pancakeswap.finance/images/tokens/0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82.png"
+      "logoURI": "https://ohmprotocol.xyz/logo.png"
     },
     {
       "name": "Voltage Token",
@@ -89,7 +89,7 @@
       "address": "0x3f2EF899eF580e6ee6202212585873E75F85C829",
       "chainId": 7001,
       "decimals": 18,
-      "logoURI": "https://pancakeswap.finance/images/tokens/0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82.png"
+      "logoURI": "https://pancakeswap.finance/images/tokens/0xcF6BB5389c92Bdda8a3747Ddb454cB7a64626C63.png"
     },
     {
       "name": "PancakeSwap Token",
