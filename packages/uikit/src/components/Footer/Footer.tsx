@@ -77,7 +77,7 @@ const MenuItem: React.FC<React.PropsWithChildren<FooterProps>> = ({
             </StyledList>
           ))}
           <Box display={["none", null, "block"]}>
-            <LogoWithTextIcon width="160px" />
+            <img src="./logo.png" alt="ggg" width={65} height={58} />
           </Box>
         </Flex>
         <StyledSocialLinks order={[2]} pb={["42px", null, "32px"]} mb={["0", null, "32px"]} />
