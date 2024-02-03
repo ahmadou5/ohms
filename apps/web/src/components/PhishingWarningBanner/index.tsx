@@ -9,11 +9,8 @@ const Container = styled(Flex)`
   height: 100%;
   padding: 12px;
   align-items: center;
-  background: linear-gradient(0deg, rgba(39, 38, 44, 0.4), rgba(39, 38, 44, 0.4)),
-    linear-gradient(180deg, #007457; 0%, #007457; 100%);
-  ${({ theme }) => theme.mediaQueries.md} {
-    padding: 0px;
-    background: linear-gradient(180deg, #007457 0%, #007457 100%);
+ 
+  background: linear-gradient(180deg, #007457 0%, #007457 100%);
   }
 `
 

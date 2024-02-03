@@ -99,8 +99,8 @@ const ZetaChainTestnet:Chain = {
   },
   contracts: {
     multicall3: {
-      address: "0x3f585532dc60f9da788119bee49e7d52979b63fa",
-      blockCreated: 3187417
+      address: "0xFC513615C18E4539CCa16DaF7c3A97CE9F4E9DE6",
+      blockCreated: 3486373
     }
   }
 };

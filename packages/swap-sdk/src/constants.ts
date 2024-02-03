@@ -101,6 +101,14 @@ export const WBNB = {
     'Wrapped ZETA',
     'https://zetachain.com'
   ),
+  [ChainId.ZETA]: new ERC20Token(
+    ChainId.ZETA,
+    '0xc1ebc1e8F49dAB830C1DD63B15513EDca5a9fD98',
+    18,
+    'WZETA',
+    'Wrapped ZETA',
+    'https://zetachain.com'
+  ),
   [ChainId.BSC_TESTNET]: new ERC20Token(
     ChainId.BSC_TESTNET,
     '0xae13d989daC2f0dEbFf460aC112a837C89BAa7cd',
@@ -117,7 +125,8 @@ export const WNATIVE: Record<number, ERC20Token> = {
   [ChainId.BSC]: WBNB[ChainId.BSC],
   [ChainId.FON]: WETH9[ChainId.FON],
   [ChainId.BSC_TESTNET]: WBNB[ChainId.BSC_TESTNET],
-  [ChainId.ZETAT]: WBNB[ChainId.ZETAT]
+  [ChainId.ZETAT]: WBNB[ChainId.ZETAT],
+  [ChainId.ZETA]: WBNB[ChainId.ZETA]
 }
 
 export const NATIVE: Record<

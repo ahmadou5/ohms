@@ -87,7 +87,16 @@ const config: (
       ].map((item) => addMenuItemSupported(item, chainId)),
     },
     {
-      label: 'Inscribe',
+      label: 'Ordinals',
+      href: '/404',
+      icon: MoreIcon,
+      hideSubNav: true,
+      items: [
+      
+      ].map((item) => addMenuItemSupported(item, chainId)),
+    },
+    {
+      label: 'Quest',
       href: '/404',
       icon: MoreIcon,
       hideSubNav: true,
