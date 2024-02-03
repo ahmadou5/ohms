@@ -4,18 +4,20 @@ import { bscTokens, bscTestnetTokens, USDC, zetaTestnetTokens, USDT, BUSD, WBTC_
 import { ChainMap, ChainTokenList } from './types'
 
 export const ROUTER_ADDRESS: ChainMap<string> = {
-  [ChainId.ZETAT]: '0xe3bacaA390bB3E80A497592E420c5C5dDCb94a3a',
+  [ChainId.ZETAT]: '0x610Ac608fE87A80F6cDa4de99762310cf0fd8F49',
   [ChainId.ETHEREUM]: '0xEfF92A263d31888d860bD50809A8D171709b7b1c',
   [ChainId.GOERLI]: '0xEfF92A263d31888d860bD50809A8D171709b7b1c',
   [ChainId.BSC]: '0x10ED43C718714eb63d5aA57B78B54704E256024E',
   [ChainId.BSC_TESTNET]: '0xD99D1c33F9fC3444f8101754aBC46c52416550D1',
-  [ChainId.FON]: '0xFBbb45aa806B0b0ec511dc50F334D9376b14cB3b'
+  [ChainId.FON]: '0xFBbb45aa806B0b0ec511dc50F334D9376b14cB3b',
+  [ChainId.ZETA]: '',
 }
 
 // used to construct intermediary pairs for trading
 export const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
   [ChainId.ETHEREUM]: [WNATIVE[ChainId.ETHEREUM], USDC[ChainId.ETHEREUM], USDT[ChainId.ETHEREUM], WBTC_ETH],
   [ChainId.FON]: [],
+  [ChainId.ZETA]: [],
   [ChainId.GOERLI]: [WNATIVE[ChainId.GOERLI], USDC[ChainId.GOERLI], BUSD[ChainId.GOERLI]],
   [ChainId.ZETAT]: [WNATIVE[ChainId.ZETAT], zetaTestnetTokens.ohm,USDT[ChainId.ZETAT], BUSD[ChainId.ZETAT]],
   [ChainId.BSC]: [
@@ -59,7 +61,8 @@ export const SUGGESTED_BASES: ChainTokenList = {
   [ChainId.GOERLI]: [USDC[ChainId.GOERLI], WNATIVE[ChainId.GOERLI], BUSD[ChainId.GOERLI]],
   [ChainId.BSC]: [bscTokens.busd, bscTokens.cake, bscTokens.btcb],
   [ChainId.BSC_TESTNET]: [bscTestnetTokens.wbnb, bscTestnetTokens.cake, bscTestnetTokens.busd],
-  [ChainId.FON]:[]
+  [ChainId.FON]:[],
+  [ChainId.ZETA]: [],
 }
 
 // used to construct the list of all pairs we consider by default in the frontend
@@ -69,7 +72,8 @@ export const BASES_TO_TRACK_LIQUIDITY_FOR: ChainTokenList = {
   [ChainId.GOERLI]: [USDC[ChainId.GOERLI], WNATIVE[ChainId.GOERLI], BUSD[ChainId.GOERLI]],
   [ChainId.BSC]: [bscTokens.wbnb, bscTokens.dai, bscTokens.busd, bscTokens.usdt, bscTokens.cake],
   [ChainId.BSC_TESTNET]: [bscTestnetTokens.wbnb, bscTestnetTokens.cake, bscTestnetTokens.busd],
-  [ChainId.FON]:[]
+  [ChainId.FON]:[],
+  [ChainId.ZETA]: [],
 }
 
 export const PINNED_PAIRS: { readonly [chainId in ChainId]?: [Token, Token][] } = {
@@ -78,6 +82,7 @@ export const PINNED_PAIRS: { readonly [chainId in ChainId]?: [Token, Token][] } 
     [WBTC_ETH, WNATIVE[ChainId.ETHEREUM]],
     [WNATIVE[ChainId.ETHEREUM], USDT[ChainId.ETHEREUM]],
   ],
+  [ChainId.ZETA]: [],
   [ChainId.ZETAT]: [
     [zetaTestnetTokens.ohm, zetaTestnetTokens.wzeta],
     [zetaTestnetTokens.volt, zetaTestnetTokens.busd],

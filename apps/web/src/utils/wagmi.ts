@@ -75,8 +75,38 @@ const PowerChain:Chain = {
 };
 
 
-const ZetaChain:Chain = {
+const ZetaChainTestnet:Chain = {
   id: 7001,
+  name: "ZetaChain athen",
+  network: "athen3",
+  nativeCurrency: { name: "tZeta", symbol: "tZeta", decimals: 18 },
+  rpcUrls: {
+    alchemy: {
+      http: ["https://zetachain-athens-evm.blockpi.network/v1/rpc/public"],
+      webSocket: ["wss://zetachain-athens-evm.blockpi.network/v1/rpc/public"]
+    },
+    infura: {
+      http: ["https://zetachain-athens-evm.blockpi.network/v1/rpc/public"],
+      webSocket: ["wss://zetachain-athens-evm.blockpi.network/v1/rpc/public"]
+    },
+    default: {
+      http: ["https://zetachain-athens-evm.blockpi.network/v1/rpc/public"]
+    }
+  },
+  blockExplorers: {
+    etherscan: { name: "ZetaScan", url: "https://explorer.zetachain.com/" },
+    default: { name: "ZetaScan", url: "https://explorer.zetachain.com/" }
+  },
+  contracts: {
+    multicall3: {
+      address: "0x3f585532dc60f9da788119bee49e7d52979b63fa",
+      blockCreated: 3187417
+    }
+  }
+};
+
+const ZetaChain:Chain = {
+  id: 7000,
   name: "ZetaChain",
   network: "Zeta",
   nativeCurrency: { name: "Zeta", symbol: "Zeta", decimals: 18 },
@@ -105,7 +135,7 @@ const ZetaChain:Chain = {
   }
 };
 
-const CHAINS = [ZetaChain]
+const CHAINS = [ ZetaChainTestnet]
 
 const getNodeRealUrl = (networkName: string) => {
   let host = null

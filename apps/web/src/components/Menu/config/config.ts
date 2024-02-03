@@ -61,7 +61,7 @@ const config: (
         
         {
           label: t('Bridge'),
-          href: 'https://bridge.pancakeswap.finance/',
+          href: 'https://app.eddy.finance/',
           type: DropdownMenuItemType.EXTERNAL_LINK,
         },
       ].map((item) => addMenuItemSupported(item, chainId)),
@@ -76,41 +76,32 @@ const config: (
         {
           label: t('Farms'),
           href: '/farms',
+          status: 'Soon',
         },
         {
           label: t('Pools'),
           href: '/pools',
+          status: 'Live',
           supportChainIds: SUPPORT_ONLY_BSC,
         },
       ].map((item) => addMenuItemSupported(item, chainId)),
     },
     {
-      label: 'Faucet',
-      href: '/info',
+      label: 'Inscribe',
+      href: '/404',
       icon: MoreIcon,
       hideSubNav: true,
       items: [
-        {
-          label: t('Get $ZETA'),
-          href: '/farms',
-        },
-        {
-          label: t('Get $OHMP'),
-          href: '/pools',
-          supportChainIds: SUPPORT_ONLY_BSC,
-        },
+      
       ].map((item) => addMenuItemSupported(item, chainId)),
     },
     {
       label: '',
-      href: '/info',
+      href: '/',
       icon: MoreIcon,
       hideSubNav: true,
       items: [
-        {
-          label: t('Info'),
-          href: '/info',
-        },
+        
         {
           label: t('IFO'),
           href: '/ifo',

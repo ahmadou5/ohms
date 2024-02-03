@@ -8,8 +8,9 @@ export const ROUTER_ADDRESS: ChainMap<string> = {
   [ChainId.GOERLI]: '0x3BC722f252C7bAE2f55647e49aDcB9d33Ff6eBcC',
   [ChainId.BSC]: '0x10ED43C718714eb63d5aA57B78B54704E256024E',
   [ChainId.BSC_TESTNET]: '0xD99D1c33F9fC3444f8101754aBC46c52416550D1',
-  [ChainId.ZETAT]: '0xe3bacaA390bB3E80A497592E420c5C5dDCb94a3a',
-  [ChainId.FON]: '0xFBbb45aa806B0b0ec511dc50F334D9376b14cB3b'
+  [ChainId.ZETAT]: '0x610Ac608fE87A80F6cDa4de99762310cf0fd8F49',
+  [ChainId.FON]: '0xFBbb45aa806B0b0ec511dc50F334D9376b14cB3b',
+  [ChainId.ZETA]: ''
 }
 
 export const STABLE_SWAP_INFO_ADDRESS: ChainMap<string> = {
@@ -18,7 +19,8 @@ export const STABLE_SWAP_INFO_ADDRESS: ChainMap<string> = {
   [ChainId.BSC]: '0xa680d27f63Fa5E213C502d1B3Ca1EB6a3C1b31D6',
   [ChainId.BSC_TESTNET]: '0xaE6C14AAA753B3FCaB96149e1E10Bc4EDF39F546',
   [ChainId.ZETAT]: '',
-  [ChainId.FON]: ''
+  [ChainId.FON]: '',
+  [ChainId.ZETA]: ''
 }
 
 // used to construct intermediary pairs for trading
@@ -31,6 +33,7 @@ export const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
     WBNB[ChainId.ETHEREUM],
   ],
   [ChainId.FON]: [],
+  [ChainId.ZETA]: [],
   [ChainId.ZETAT]: [WNATIVE[ChainId.ZETAT], zetaTestnetTokens.ohm,USDT[ChainId.ZETAT], BUSD[ChainId.ZETAT]],
   [ChainId.GOERLI]: [WNATIVE[ChainId.GOERLI], USDC[ChainId.GOERLI], BUSD[ChainId.GOERLI]],
   [ChainId.BSC]: [
@@ -78,7 +81,8 @@ export const SUGGESTED_BASES: ChainTokenList = {
   [ChainId.GOERLI]: [USDC[ChainId.GOERLI], WNATIVE[ChainId.GOERLI], BUSD[ChainId.GOERLI]],
   [ChainId.BSC]: [bscTokens.busd, bscTokens.cake, bscTokens.btcb],
   [ChainId.BSC_TESTNET]: [bscTestnetTokens.wbnb, bscTestnetTokens.cake, bscTestnetTokens.busd],
-  [ChainId.FON]: []
+  [ChainId.FON]: [],
+  [ChainId.ZETA]: []
 }
 
 // used to construct the list of all pairs we consider by default in the frontend
@@ -90,6 +94,7 @@ export const BASES_TO_TRACK_LIQUIDITY_FOR: ChainTokenList = {
     USDT[ChainId.ETHEREUM],
     WBNB[ChainId.ETHEREUM],
   ],
+  [ChainId.ZETA]: [],
   [ChainId.FON]: [],
   [ChainId.ZETAT]: [USDT[ChainId.ZETAT], WNATIVE[ChainId.ZETAT], BUSD[ChainId.ZETAT]],
   [ChainId.GOERLI]: [USDC[ChainId.GOERLI], WNATIVE[ChainId.GOERLI], BUSD[ChainId.GOERLI]],

@@ -8,6 +8,7 @@ export const CHAIN_QUERY_NAME = {
   [ChainId.BSC]: 'bsc',
   [ChainId.BSC_TESTNET]: 'bscTestnet',
   [ChainId.ZETAT]: 'zetaTestnet',
+  [ChainId.ZETA]: 'zeta',
   [ChainId.FON]: 'FonChain',
 } satisfies Record<ChainId, string>
 

@@ -44,7 +44,7 @@ const MenuItem: React.FC<React.PropsWithChildren<FooterProps>> = ({
     >
       <Flex flexDirection="column" width={["100%", null, "1200px;"]}>
         <StyledIconMobileContainer display={["block", null, "none"]}>
-          <LogoWithTextIcon width="130px" />
+        <img src="./logo.png" alt="ggg" width={65} height={58} />
         </StyledIconMobileContainer>
         <Flex
           order={[2, null, 1]}
