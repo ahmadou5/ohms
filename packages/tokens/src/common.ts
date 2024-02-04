@@ -122,6 +122,15 @@ export const BUSD_GOERLI = new ERC20Token(
   'https://www.paxos.com/busd/',
 )
 
+export const BUSD_X1 = new ERC20Token(
+  ChainId.X1_TESTNET,
+  '0xded3ac2a172a21a729063c39da55c030ec4a8cc9',
+  18,
+  'BUSD',
+  'Binance USD',
+  'https://www.paxos.com/busd/',
+)
+
 export const BUSD_ZETA = new ERC20Token(
   ChainId.ZETAT,
   '0x6B9e34b56504B33468dACbb6D37b79C1b4D3B70E',
@@ -139,6 +148,7 @@ export const BUSD: Record<ChainId, ERC20Token> = {
   [ChainId.ZETAT]: BUSD_ZETA,
   [ChainId.ZETA]: BUSD_ZETA,
   [ChainId.FON]: BUSD_ZETA,
+  [ChainId.X1_TESTNET]: BUSD_X1
 }
 
 export const CAKE = {

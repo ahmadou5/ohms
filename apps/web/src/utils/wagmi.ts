@@ -105,6 +105,36 @@ const ZetaChainTestnet:Chain = {
   }
 };
 
+const OKXTestnet:Chain = {
+  id: 195,
+  name: "X1 Testnet",
+  network: "X1",
+  nativeCurrency: { name: "OKB", symbol: "OKB", decimals: 18 },
+  rpcUrls: {
+    alchemy: {
+      http: ["https://x1testrpc.okx.com/"],
+      webSocket: ["https://x1testrpc.okx.com/"]
+    },
+    infura: {
+      http: ["https://x1testrpc.okx.com/"],
+      webSocket: ["https://x1testrpc.okx.com/"]
+    },
+    default: {
+      http: ["https://x1testrpc.okx.com/"]
+    }
+  },
+  blockExplorers: {
+    etherscan: { name: "X1Scan", url: "https://www.okx.com/explorer/x1-test/" },
+    default: { name: "X1Scan", url: "https://www.okx.com/explorer/x1-test/" }
+  },
+  contracts: {
+    multicall3: {
+      address: "0x967e19C9a147d7EDB5cc3Bbdd91bE77A15D237E2",
+      blockCreated: 8853414
+    }
+  }
+};
+
 const ZetaChain:Chain = {
   id: 7000,
   name: "ZetaChain",
@@ -135,7 +165,7 @@ const ZetaChain:Chain = {
   }
 };
 
-const CHAINS = [ ZetaChainTestnet]
+const CHAINS = [ ZetaChainTestnet,OKXTestnet]
 
 const getNodeRealUrl = (networkName: string) => {
   let host = null

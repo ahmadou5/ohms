@@ -10,7 +10,8 @@ export const ROUTER_ADDRESS: ChainMap<string> = {
   [ChainId.BSC_TESTNET]: '0xD99D1c33F9fC3444f8101754aBC46c52416550D1',
   [ChainId.ZETAT]: '0x610Ac608fE87A80F6cDa4de99762310cf0fd8F49',
   [ChainId.FON]: '0xFBbb45aa806B0b0ec511dc50F334D9376b14cB3b',
-  [ChainId.ZETA]: ''
+  [ChainId.ZETA]: '',
+  [ChainId.X1_TESTNET]: '0x6B9e34b56504B33468dACbb6D37b79C1b4D3B70E'
 }
 
 export const STABLE_SWAP_INFO_ADDRESS: ChainMap<string> = {
@@ -20,7 +21,8 @@ export const STABLE_SWAP_INFO_ADDRESS: ChainMap<string> = {
   [ChainId.BSC_TESTNET]: '0xaE6C14AAA753B3FCaB96149e1E10Bc4EDF39F546',
   [ChainId.ZETAT]: '',
   [ChainId.FON]: '',
-  [ChainId.ZETA]: ''
+  [ChainId.ZETA]: '',
+  [ChainId.X1_TESTNET]: ''
 }
 
 // used to construct intermediary pairs for trading
@@ -33,6 +35,7 @@ export const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
     WBNB[ChainId.ETHEREUM],
   ],
   [ChainId.FON]: [],
+  [ChainId.X1_TESTNET]: [],
   [ChainId.ZETA]: [],
   [ChainId.ZETAT]: [WNATIVE[ChainId.ZETAT], zetaTestnetTokens.ohm,USDT[ChainId.ZETAT], BUSD[ChainId.ZETAT]],
   [ChainId.GOERLI]: [WNATIVE[ChainId.GOERLI], USDC[ChainId.GOERLI], BUSD[ChainId.GOERLI]],
@@ -82,7 +85,8 @@ export const SUGGESTED_BASES: ChainTokenList = {
   [ChainId.BSC]: [bscTokens.busd, bscTokens.cake, bscTokens.btcb],
   [ChainId.BSC_TESTNET]: [bscTestnetTokens.wbnb, bscTestnetTokens.cake, bscTestnetTokens.busd],
   [ChainId.FON]: [],
-  [ChainId.ZETA]: []
+  [ChainId.ZETA]: [],
+  [ChainId.X1_TESTNET]: [],
 }
 
 // used to construct the list of all pairs we consider by default in the frontend
@@ -95,6 +99,7 @@ export const BASES_TO_TRACK_LIQUIDITY_FOR: ChainTokenList = {
     WBNB[ChainId.ETHEREUM],
   ],
   [ChainId.ZETA]: [],
+  [ChainId.X1_TESTNET]: [],
   [ChainId.FON]: [],
   [ChainId.ZETAT]: [USDT[ChainId.ZETAT], WNATIVE[ChainId.ZETAT], BUSD[ChainId.ZETAT]],
   [ChainId.GOERLI]: [USDC[ChainId.GOERLI], WNATIVE[ChainId.GOERLI], BUSD[ChainId.GOERLI]],

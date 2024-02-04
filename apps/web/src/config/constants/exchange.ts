@@ -11,12 +11,14 @@ export const ROUTER_ADDRESS: ChainMap<string> = {
   [ChainId.BSC_TESTNET]: '0xD99D1c33F9fC3444f8101754aBC46c52416550D1',
   [ChainId.FON]: '0xFBbb45aa806B0b0ec511dc50F334D9376b14cB3b',
   [ChainId.ZETA]: '',
+  [ChainId.X1_TESTNET]: '0x6B9e34b56504B33468dACbb6D37b79C1b4D3B70E'
 }
 
 // used to construct intermediary pairs for trading
 export const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
   [ChainId.ETHEREUM]: [WNATIVE[ChainId.ETHEREUM], USDC[ChainId.ETHEREUM], USDT[ChainId.ETHEREUM], WBTC_ETH],
   [ChainId.FON]: [],
+  [ChainId.X1_TESTNET]: [],
   [ChainId.ZETA]: [],
   [ChainId.GOERLI]: [WNATIVE[ChainId.GOERLI], USDC[ChainId.GOERLI], BUSD[ChainId.GOERLI]],
   [ChainId.ZETAT]: [WNATIVE[ChainId.ZETAT], zetaTestnetTokens.ohm,USDT[ChainId.ZETAT], BUSD[ChainId.ZETAT]],
@@ -63,6 +65,7 @@ export const SUGGESTED_BASES: ChainTokenList = {
   [ChainId.BSC_TESTNET]: [bscTestnetTokens.wbnb, bscTestnetTokens.cake, bscTestnetTokens.busd],
   [ChainId.FON]:[],
   [ChainId.ZETA]: [],
+  [ChainId.X1_TESTNET]: [],
 }
 
 // used to construct the list of all pairs we consider by default in the frontend
@@ -74,6 +77,7 @@ export const BASES_TO_TRACK_LIQUIDITY_FOR: ChainTokenList = {
   [ChainId.BSC_TESTNET]: [bscTestnetTokens.wbnb, bscTestnetTokens.cake, bscTestnetTokens.busd],
   [ChainId.FON]:[],
   [ChainId.ZETA]: [],
+  [ChainId.X1_TESTNET]: [],
 }
 
 export const PINNED_PAIRS: { readonly [chainId in ChainId]?: [Token, Token][] } = {
@@ -83,6 +87,7 @@ export const PINNED_PAIRS: { readonly [chainId in ChainId]?: [Token, Token][] } 
     [WNATIVE[ChainId.ETHEREUM], USDT[ChainId.ETHEREUM]],
   ],
   [ChainId.ZETA]: [],
+  [ChainId.X1_TESTNET]: [],
   [ChainId.ZETAT]: [
     [zetaTestnetTokens.ohm, zetaTestnetTokens.wzeta],
     [zetaTestnetTokens.volt, zetaTestnetTokens.busd],
@@ -128,7 +133,7 @@ export const DEFAULT_OUTPUT_CURRENCY = '0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE
 
 // Handler string is passed to Gelato to use PCS router
 export const GELATO_HANDLER = 'pancakeswap'
-export const GENERIC_GAS_LIMIT_ORDER_EXECUTION = BigNumber.from(500000)
+export const GENERIC_GAS_LIMIT_ORDER_EXECUTION = BigNumber.from(5000000)
 
 export const LIMIT_ORDERS_DOCS_URL = 'https://docs.pancakeswap.finance/products/pancakeswap-exchange/limit-orders'
 
