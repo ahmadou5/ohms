@@ -1,5 +1,5 @@
 import { ChainId, Token, WBNB, WNATIVE } from '@pancakeswap/sdk'
-import { bscTokens, bscTestnetTokens, BUSD, USDC, USDT , zetaTestnetTokens } from '@pancakeswap/tokens'
+import { bscTokens, bscTestnetTokens, BUSD, USDC, USDT ,X1TestnetTokens, zetaTestnetTokens } from '@pancakeswap/tokens'
 
 import { ChainMap, ChainTokenList } from '../types'
 
@@ -35,7 +35,11 @@ export const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
     WBNB[ChainId.ETHEREUM],
   ],
   [ChainId.FON]: [],
-  [ChainId.X1_TESTNET]: [],
+  [ChainId.X1_TESTNET]: [
+    WNATIVE[ChainId.X1_TESTNET],
+    X1TestnetTokens.busd,
+    X1TestnetTokens.wbtc
+  ],
   [ChainId.ZETA]: [],
   [ChainId.ZETAT]: [WNATIVE[ChainId.ZETAT], zetaTestnetTokens.ohm,USDT[ChainId.ZETAT], BUSD[ChainId.ZETAT]],
   [ChainId.GOERLI]: [WNATIVE[ChainId.GOERLI], USDC[ChainId.GOERLI], BUSD[ChainId.GOERLI]],
@@ -86,7 +90,7 @@ export const SUGGESTED_BASES: ChainTokenList = {
   [ChainId.BSC_TESTNET]: [bscTestnetTokens.wbnb, bscTestnetTokens.cake, bscTestnetTokens.busd],
   [ChainId.FON]: [],
   [ChainId.ZETA]: [],
-  [ChainId.X1_TESTNET]: [],
+  [ChainId.X1_TESTNET]: [X1TestnetTokens.woxb,X1TestnetTokens.busd],
 }
 
 // used to construct the list of all pairs we consider by default in the frontend
@@ -99,7 +103,7 @@ export const BASES_TO_TRACK_LIQUIDITY_FOR: ChainTokenList = {
     WBNB[ChainId.ETHEREUM],
   ],
   [ChainId.ZETA]: [],
-  [ChainId.X1_TESTNET]: [],
+  [ChainId.X1_TESTNET]: [BUSD[ChainId.X1_TESTNET], WNATIVE[ChainId.X1_TESTNET]],
   [ChainId.FON]: [],
   [ChainId.ZETAT]: [USDT[ChainId.ZETAT], WNATIVE[ChainId.ZETAT], BUSD[ChainId.ZETAT]],
   [ChainId.GOERLI]: [USDC[ChainId.GOERLI], WNATIVE[ChainId.GOERLI], BUSD[ChainId.GOERLI]],
@@ -116,6 +120,11 @@ export const PINNED_PAIRS: {
     [zetaTestnetTokens.dai, zetaTestnetTokens.wbtc],
   ],
   [ChainId.FON]:[],
+  [ChainId.X1_TESTNET]:[ 
+    [WNATIVE[ChainId.X1_TESTNET],BUSD[ChainId.X1_TESTNET]],
+    [WNATIVE[ChainId.X1_TESTNET],X1TestnetTokens.wbtc]
+     
+  ],
   [ChainId.ETHEREUM]: [
     [WNATIVE[ChainId.ETHEREUM], USDC[ChainId.ETHEREUM]],
     [WBNB[ChainId.ETHEREUM], USDC[ChainId.ETHEREUM]],

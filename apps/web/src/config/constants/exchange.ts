@@ -1,6 +1,6 @@
 import { ChainId, JSBI, Percent, Token, WNATIVE } from '@pancakeswap/sdk'
 import { BigNumber } from '@ethersproject/bignumber'
-import { bscTokens, bscTestnetTokens, USDC, zetaTestnetTokens, USDT, BUSD, WBTC_ETH } from '@pancakeswap/tokens'
+import { bscTokens, bscTestnetTokens, USDC, zetaTestnetTokens,X1TestnetTokens, USDT, BUSD, WBTC_ETH } from '@pancakeswap/tokens'
 import { ChainMap, ChainTokenList } from './types'
 
 export const ROUTER_ADDRESS: ChainMap<string> = {
@@ -18,7 +18,11 @@ export const ROUTER_ADDRESS: ChainMap<string> = {
 export const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
   [ChainId.ETHEREUM]: [WNATIVE[ChainId.ETHEREUM], USDC[ChainId.ETHEREUM], USDT[ChainId.ETHEREUM], WBTC_ETH],
   [ChainId.FON]: [],
-  [ChainId.X1_TESTNET]: [],
+  [ChainId.X1_TESTNET]: [
+    WNATIVE[ChainId.X1_TESTNET],
+    X1TestnetTokens.busd,
+    X1TestnetTokens.wbtc
+  ],
   [ChainId.ZETA]: [],
   [ChainId.GOERLI]: [WNATIVE[ChainId.GOERLI], USDC[ChainId.GOERLI], BUSD[ChainId.GOERLI]],
   [ChainId.ZETAT]: [WNATIVE[ChainId.ZETAT], zetaTestnetTokens.ohm,USDT[ChainId.ZETAT], BUSD[ChainId.ZETAT]],
@@ -65,7 +69,7 @@ export const SUGGESTED_BASES: ChainTokenList = {
   [ChainId.BSC_TESTNET]: [bscTestnetTokens.wbnb, bscTestnetTokens.cake, bscTestnetTokens.busd],
   [ChainId.FON]:[],
   [ChainId.ZETA]: [],
-  [ChainId.X1_TESTNET]: [],
+  [ChainId.X1_TESTNET]: [X1TestnetTokens.woxb,X1TestnetTokens.busd],
 }
 
 // used to construct the list of all pairs we consider by default in the frontend
@@ -77,7 +81,7 @@ export const BASES_TO_TRACK_LIQUIDITY_FOR: ChainTokenList = {
   [ChainId.BSC_TESTNET]: [bscTestnetTokens.wbnb, bscTestnetTokens.cake, bscTestnetTokens.busd],
   [ChainId.FON]:[],
   [ChainId.ZETA]: [],
-  [ChainId.X1_TESTNET]: [],
+  [ChainId.X1_TESTNET]: [BUSD[ChainId.X1_TESTNET], WNATIVE[ChainId.X1_TESTNET]],
 }
 
 export const PINNED_PAIRS: { readonly [chainId in ChainId]?: [Token, Token][] } = {
@@ -87,7 +91,11 @@ export const PINNED_PAIRS: { readonly [chainId in ChainId]?: [Token, Token][] } 
     [WNATIVE[ChainId.ETHEREUM], USDT[ChainId.ETHEREUM]],
   ],
   [ChainId.ZETA]: [],
-  [ChainId.X1_TESTNET]: [],
+  [ChainId.X1_TESTNET]:[ 
+    [WNATIVE[ChainId.X1_TESTNET],BUSD[ChainId.X1_TESTNET]],
+    [WNATIVE[ChainId.X1_TESTNET],X1TestnetTokens.wbtc]
+     
+  ],
   [ChainId.ZETAT]: [
     [zetaTestnetTokens.ohm, zetaTestnetTokens.wzeta],
     [zetaTestnetTokens.volt, zetaTestnetTokens.busd],
