@@ -17,6 +17,16 @@ export const OHM_TESTNET = new ERC20Token(
   'https://ohmprotocol.xyz/',
 )
 
+export const OHM_FON = new ERC20Token(
+  ChainId.FON,
+  '0xf7E6d65E000b53C3030cAfB7D24Fdf3D26a4ce41',
+  18,
+  'Ohm',
+  'Ohm Protocol Token',
+  'https://ohmprotocol.xyz/',
+)
+
+
 export const CAKE_TESTNET = new ERC20Token(
   ChainId.BSC_TESTNET,
   '0xFa60D973F7642B748046464e165A65B7323b0DEE',
@@ -156,6 +166,7 @@ export const CAKE = {
   [ChainId.BSC_TESTNET]: CAKE_TESTNET,
   [ChainId.ZETAT]: OHM_TESTNET,
   [ChainId.ZETA]: BUSD_ZETA,
+  [ChainId.FON]: OHM_FON
 }
 
 export const USDC = {
