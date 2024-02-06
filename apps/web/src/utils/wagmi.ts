@@ -104,7 +104,7 @@ const ZetaChainTestnet:Chain = {
       blockCreated: 3486373
     }
   },
-  testnet: true,
+  testnet: false,
 };
 
 const OKXTestnet:Chain = {
@@ -135,7 +135,7 @@ const OKXTestnet:Chain = {
       blockCreated: 8853414
     }
   },
-  testnet: true,
+  testnet: false,
 };
 
 const ZetaChain:Chain = {
@@ -169,7 +169,7 @@ const ZetaChain:Chain = {
   testnet: true,
 };
 
-const CHAINS = [ FonSmartChain ]
+const CHAINS = [ FonSmartChain, OKXTestnet, ZetaChainTestnet ]
 const getNodeRealUrl = (networkName: string) => {
   let host = null
 
