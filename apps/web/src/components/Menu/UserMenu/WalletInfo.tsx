@@ -88,6 +88,7 @@ const WalletInfo: React.FC<WalletInfoProps> = ({ hasLowNativeBalance, onDismiss 
               {getBlockExploreName(chainId)}
             </LinkExternal>
           </Flex>
+        
           <Flex alignItems="center" justifyContent="space-between">
             <Text color="textSubtle">
               {native.symbol} {t('Balance')}
@@ -108,7 +109,9 @@ const WalletInfo: React.FC<WalletInfoProps> = ({ hasLowNativeBalance, onDismiss 
               ) : (
                 <Text>{getFullDisplayBalance(wNativeBalance, wNativeToken.decimals, 6)}</Text>
               )}
+              
             </Flex>
+            
           )}
         </Box>
       )}

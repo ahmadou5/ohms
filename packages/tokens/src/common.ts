@@ -26,6 +26,14 @@ export const OHM_FON = new ERC20Token(
   'https://ohmprotocol.xyz/',
 )
 
+export const OHM_X1 = new ERC20Token(
+  ChainId.X1_TESTNET,
+  '0x9d8b9dbac2B6F21bC4bd6b05A0De4ccdBf219747',
+  18,
+  'Ohm',
+  'Ohm Protocol Token',
+  'https://ohmprotocol.xyz/',
+)
 
 export const CAKE_TESTNET = new ERC20Token(
   ChainId.BSC_TESTNET,
@@ -150,6 +158,15 @@ export const BUSD_ZETA = new ERC20Token(
   'https://www.paxos.com/busd/',
 )
 
+export const BUSD_FON = new ERC20Token(
+  ChainId.FON,
+  '0x9a9eD7440a3850c4D7240c9FcA8B7C96802615f0',
+  18,
+  'BUSD',
+  'Binance USD',
+  'https://www.paxos.com/busd/',
+)
+
 export const BUSD: Record<ChainId, ERC20Token> = {
   [ChainId.ETHEREUM]: BUSD_ETH,
   [ChainId.GOERLI]: BUSD_GOERLI,
@@ -166,7 +183,8 @@ export const CAKE = {
   [ChainId.BSC_TESTNET]: CAKE_TESTNET,
   [ChainId.ZETAT]: OHM_TESTNET,
   [ChainId.ZETA]: BUSD_ZETA,
-  [ChainId.FON]: OHM_FON
+  [ChainId.FON]: OHM_FON,
+  [ChainId.X1_TESTNET]: OHM_X1
 }
 
 export const USDC = {
