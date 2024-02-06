@@ -71,7 +71,8 @@ const PowerChain:Chain = {
       address: "0xB289e7b820F9b85e28156232085da7307795934f",
       blockCreated: 12282180
     }
-  }
+  },
+  testnet: false
 };
 
 
@@ -102,7 +103,8 @@ const ZetaChainTestnet:Chain = {
       address: "0xFC513615C18E4539CCa16DaF7c3A97CE9F4E9DE6",
       blockCreated: 3486373
     }
-  }
+  },
+  testnet: true,
 };
 
 const OKXTestnet:Chain = {
@@ -112,15 +114,15 @@ const OKXTestnet:Chain = {
   nativeCurrency: { name: "OKB", symbol: "OKB", decimals: 18 },
   rpcUrls: {
     alchemy: {
-      http: ["https://x1testrpc.okx.com/"],
-      webSocket: ["https://x1testrpc.okx.com/"]
+      http: ["https://x1testrpc.okx.com"],
+      webSocket: ["wss://x1testrpc.okx.com"]
     },
     infura: {
-      http: ["https://x1testrpc.okx.com/"],
-      webSocket: ["https://x1testrpc.okx.com/"]
+      http: ["https://x1testrpc.okx.com"],
+      webSocket: ["wss://x1testrpc.okx.com"]
     },
     default: {
-      http: ["https://x1testrpc.okx.com/"]
+      http: ["https://x1testrpc.okx.com"]
     }
   },
   blockExplorers: {
@@ -132,7 +134,8 @@ const OKXTestnet:Chain = {
       address: "0x967e19C9a147d7EDB5cc3Bbdd91bE77A15D237E2",
       blockCreated: 8853414
     }
-  }
+  },
+  testnet: true,
 };
 
 const ZetaChain:Chain = {
@@ -162,11 +165,11 @@ const ZetaChain:Chain = {
       address: "0x3f585532dc60f9da788119bee49e7d52979b63fa",
       blockCreated: 3187417
     }
-  }
+  },
+  testnet: true,
 };
 
-const CHAINS = [ ZetaChainTestnet,OKXTestnet]
-
+const CHAINS = [ FonSmartChain ]
 const getNodeRealUrl = (networkName: string) => {
   let host = null
 

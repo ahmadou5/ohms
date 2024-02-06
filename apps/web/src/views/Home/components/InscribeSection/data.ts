@@ -3,7 +3,7 @@ import { SalesSectionProps } from '.'
 
 export const swapSectionData = (t: TranslateFunction): SalesSectionProps => ({
   headingText: t('Trade'),
-  bodyText: t('Trade any token with the speed of light⚡ with the Super Charge DeFI Platform On Zeta Chain.'),
+  bodyText: t('Trade any token with the speed of light⚡ with the Super Charge DeFI Platform Ohm Protocol.'),
   reverse: false,
   primaryButton: {
     to: '/swap',

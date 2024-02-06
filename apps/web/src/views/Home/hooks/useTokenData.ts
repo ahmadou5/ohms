@@ -7,14 +7,14 @@ const useGetTokenData = () => {
     const [burn,setBurn] = useState(0);
     const [totalSupply, setTotalSupply] = useState(0);
     const { data:ohmdetails }: any = useToken({
-        address: "0xB289e7b820F9b85e28156232085da7307795934f",
-        chainId: ChainId.ZETAT
+        address: "0xf7E6d65E000b53C3030cAfB7D24Fdf3D26a4ce41",
+        chainId: ChainId.FON
     })
      
       const { data:ohmBurn } :any = useBalance({
         address: "0x000000000000000000000000000000000000dEaD",
-        token: '0xB289e7b820F9b85e28156232085da7307795934f',
-        chainId: ChainId.ZETAT
+        token: '0xf7E6d65E000b53C3030cAfB7D24Fdf3D26a4ce41',
+        chainId: ChainId.FON
     })
     useEffect(() => {
       setBurn(ohmBurn?.formatted);

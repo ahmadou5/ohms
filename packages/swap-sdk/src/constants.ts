@@ -67,6 +67,14 @@ export const WETH9 = {
     'Wrapped Ether',
     'https://weth.io'
   ),
+  [ChainId.X1_TESTNET]: new ERC20Token(
+    ChainId.X1_TESTNET,
+    '0xbec7859bc3d0603bec454f7194173e36bf2aa5c8',
+    18,
+    'WOKB',
+    'Wrapped OKB',
+    'https://okx.com'
+  ),
   [ChainId.FON]: new ERC20Token(
     ChainId.FON,
     '0xb582fD9d0D5C3515EEB6b02fF2d6eE0b6E45E7A7',
@@ -138,7 +146,8 @@ export const WNATIVE: Record<number, ERC20Token> = {
   [ChainId.FON]: WETH9[ChainId.FON],
   [ChainId.BSC_TESTNET]: WBNB[ChainId.BSC_TESTNET],
   [ChainId.ZETAT]: WBNB[ChainId.ZETAT],
-  [ChainId.ZETA]: WBNB[ChainId.ZETA]
+  [ChainId.ZETA]: WBNB[ChainId.ZETA],
+  [ChainId.X1_TESTNET]: WBNB[ChainId.X1_TESTNET]
 }
 
 export const NATIVE: Record<

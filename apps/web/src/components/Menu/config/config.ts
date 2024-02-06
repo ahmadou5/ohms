@@ -3,6 +3,8 @@ import {
   DropdownMenuItemType,
   SwapIcon,
   SwapFillIcon,
+  TicketIcon,
+  TicketFillIcon,
   EarnFillIcon,
   EarnIcon,
   TrophyIcon,
@@ -21,6 +23,7 @@ export type ConfigMenuDropDownItemsType = DropdownMenuItems & { hideSubNav?: boo
 export type ConfigMenuItemsType = Omit<MenuItemsType, 'items'> & { hideSubNav?: boolean; image?: string } & {
   items?: ConfigMenuDropDownItemsType[]
 }
+
 
 const addMenuItemSupported = (item, chainId) => {
   if (!chainId || !item.supportChainIds) {
@@ -61,7 +64,7 @@ const config: (
         
         {
           label: t('Bridge'),
-          href: 'https://app.eddy.finance/',
+          href: 'https://hieswap.com/',
           type: DropdownMenuItemType.EXTERNAL_LINK,
         },
       ].map((item) => addMenuItemSupported(item, chainId)),
@@ -75,34 +78,65 @@ const config: (
       items: [
         {
           label: t('Farms'),
-          href: '/farms',
-          status: 'Soon',
+          href: '/#',
+          status: {
+            text: 'soon',
+            color: 'success'
+          },
         },
         {
           label: t('Pools'),
-          href: '/pools',
-          status: 'Live',
+          href: '/#',
+          status: {
+            text: 'soon',
+            color: 'success'
+          },
+          supportChainIds: SUPPORT_ONLY_BSC,
+        },
+      ].map((item) => addMenuItemSupported(item, chainId)),
+    },
+    
+    {
+      label: 'Ordinals',
+      href: '/#',
+      icon: NftIcon,
+      fillIcon: NftFillIcon,
+      hideSubNav: false,
+      items: [
+        {
+          label: t('Explorer'),
+          href: '/#',
+          status: {
+            text: 'soon',
+            color: 'success'
+          },
+        },
+        {
+          label: t('Inscribe'),
+          href: '/#',
+          status: {
+            text: 'soon',
+            color: 'success'
+          },
           supportChainIds: SUPPORT_ONLY_BSC,
         },
       ].map((item) => addMenuItemSupported(item, chainId)),
     },
     {
-      label: 'Ordinals',
-      href: '/404',
-      icon: MoreIcon,
-      hideSubNav: true,
+      label: t('Quest'),
+      href: `/airdrop-program`,
+      icon: TicketIcon,
+      fillIcon: TicketFillIcon,
       items: [
-      
-      ].map((item) => addMenuItemSupported(item, chainId)),
-    },
-    {
-      label: 'Quest',
-      href: '/404',
-      icon: MoreIcon,
-      hideSubNav: true,
-      items: [
-      
-      ].map((item) => addMenuItemSupported(item, chainId)),
+        {
+          label: t('Overview'),
+          href: `/airdrop-program`,
+        },
+        {
+          label: t('Quest'),
+          href: `/airdrop-program/quest`,
+        },
+      ],
     },
     {
       label: '',
@@ -112,8 +146,12 @@ const config: (
       items: [
         
         {
-          label: t('IFO'),
+          label: t('LaunchPad'),
           href: '/ifo',
+          status: {
+            text: 'soon',
+            color: 'success'
+          },
           supportChainIds: SUPPORT_ONLY_BSC,
           image: '/images/ifos/ifo-bunny.png',
         },

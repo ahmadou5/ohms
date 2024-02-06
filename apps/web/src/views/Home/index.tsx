@@ -58,11 +58,12 @@ const Home: React.FC<React.PropsWithChildren> = () => {
     <>
       <style jsx global>
         {`
+        
           #home-1 .page-bg {
-            background: linear-gradient(139.73deg, #ffffff 0%, #f3efff 100%);
+            background: radial-gradient(103.12% 50% at 50% 50%, #007457 0%, #ffffff 100%);
           }
           [data-theme='dark'] #home-1 .page-bg {
-            background: radial-gradient(103.12% 50% at 50% 50%, #000000 0%, #191326 100%);
+            background: radial-gradient(103.12% 50% at 50% 50%, #007457 0%, #191326 100%);
           }
           #home-2 .page-bg {
             background: linear-gradient(180deg, #ffffff 22%, #d7caec 100%);

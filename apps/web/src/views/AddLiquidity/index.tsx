@@ -90,7 +90,7 @@ export default function AddLiquidity({ currencyA, currencyB }) {
   const [steps, setSteps] = useState(Steps.Choose)
 
   const { t } = useTranslation()
-  const gasPrice = useGasPrice()
+  const gasPrice = '30000'
 
   useEffect(() => {
     if (router.query.step === '1') {
@@ -257,7 +257,7 @@ export default function AddLiquidity({ currencyA, currencyB }) {
       ]
       value = BigNumber.from((tokenBIsNative ? parsedAmountB : parsedAmountA).quotient.toString())
     } else {
-      estimate = routerContract.estimateGas.addLiquidity
+      estimate = routerContract?.estimateGas?.addLiquidity
       method = routerContract.addLiquidity
       args = [
         currencyA?.wrapped?.address ?? '',
@@ -277,7 +277,7 @@ export default function AddLiquidity({ currencyA, currencyB }) {
       .then((estimatedGasLimit) =>
         method(...args, {
           ...(value ? { value } : {}),
-          gasLimit: calculateGasMargin(estimatedGasLimit),
+          gasLimit: 30000,
           gasPrice,
         }).then((response) => {
           setLiquidityState({ attemptingTxn: false, liquidityErrorMessage: undefined, txHash: response.hash })
